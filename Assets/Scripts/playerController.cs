@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour
 
     public float walkSpeed = 5;
     public float runSpeed = 5;
+
+    public bool onGround = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +30,15 @@ public class playerController : MonoBehaviour
         rb.velocity = vel;
         transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
         cameraObject.transform.Rotate(-Input.GetAxis("Mouse Y"), 0, 0);
+
+        onGround = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        if (onGround)
+        {
+            if (Input.GetKey(KeyCode.Space) && Input.GetMouseButton(1))
+            {
+                vel.y = 5;
+                rb.velocity = vel;
+            }
+        }
     }
 }
