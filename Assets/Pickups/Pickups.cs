@@ -61,14 +61,14 @@ public class Pickups : MonoBehaviour
                 ApplyOxygen();
                 break;
         }
-
-        // Object stays in the scene as requested
     }
 
     private void ApplyOxygen()
     {
-        // Placeholder for oxygen logic
-        // Example: PlayerStats.Instance.AddOxygen(value);
+        if (PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.AddOxygen(value);
+        }
         Debug.Log($"+{value} Oxygen");
     }
 
